@@ -1,3 +1,6 @@
+
+// Nav.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +11,7 @@ const Nav = () => {
       { ' | ' }
       <Link to='/about'>About Us</Link>
       { ' | ' }
-      <Link to='/team'>Team</Link>
+      <Link to='/detail'>Detail</Link>
       { ' | ' }
       <Link to='/plans'>Plans</Link>
     </nav>

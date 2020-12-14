@@ -1,8 +1,11 @@
+
+// App.js
+
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import Plans from './plans/components/Plans';
 import About from './pages/components/About';
-import Team from './pages/components/Team';
+import Detail from './pages/components/Detail';
 import Nav from './shared/components/Nav';
 
 class App extends Component {
@@ -25,7 +28,7 @@ class App extends Component {
         <Route path='/' exact render={() => <h2>Welcome to the Retirement App!</h2>} />
 
         <Route path='/about' component={About} />
-        <Route path='/team' component={Team} />
+        <Route path='/detail' component={Detail} />
 
         <Route path='/plans' exact render={(props) => {
           return <Plans {...props}

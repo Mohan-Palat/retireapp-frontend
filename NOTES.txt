@@ -1,0 +1,20 @@
+API
+
+=> /api/plans
+X /api/participants
+X /api/funds
+X ...
+X ...
+
+Components
+  App State=[Plans]
+    Plans  (List Container) => MAKE API CALL TO /api/plans
+                               => setState on the APP
+      Plan (List Item)
+        Delete
+    Search
+
+Props
+
+State
+  Plans
