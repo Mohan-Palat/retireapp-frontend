@@ -7,7 +7,7 @@ import Investment from './Investment';
 import Holding from './Holding';
 import { Route, Link } from 'react-router-dom';
 
-const Team = ({ match }) => {
+const Detail = ({ match }) => {
   return (
     <div>
       <h3>Participants, Funds and Holdings under the Plan</h3>
