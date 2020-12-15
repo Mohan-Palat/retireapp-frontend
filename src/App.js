@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom';
 import Plans from './plans/components/Plans';
 import About from './pages/components/About';
 import Detail from './pages/components/Detail';
+import NewPlan from './pages/components/NewPlan';
 import Nav from './shared/components/Nav';
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
 
         <Route path='/about' component={About} />
         <Route path='/detail' component={Detail} />
+        <Route path='/newplan' component={NewPlan} />
 
         <Route path='/plans' exact render={(props) => {
           return <Plans {...props}

@@ -12,7 +12,7 @@ class NewPlan extends Component {
     return (
       <>
         <h1>New Plan Page</h1>
-        <form>
+        <form onSubmit={this.newPlanFormSubmitted}>
           <label for="planName">Plan Name:</label>
           <input type="text" name="planName" required />
           <br/>
@@ -23,27 +23,34 @@ class NewPlan extends Component {
             </label>
           </div>
           <br/>
-          <input type="submit" value="Submit" onClick={this.insertThisPlan}></input>
+          <input type="submit" value="Submit"></input>
         </form>
       </>
     )
   }
 
   // Make an API Call to Insert Plan
-  insertThisPlan = (e) => {
+  newPlanFormSubmitted = (e) => {
     e.preventDefault();
-    console.log('The Plan to Insert', e);
-    // insertNewPlan(body)
-    //   .then((response) => {
-    //     console.log(`The Plan with body ${body} has been inserted.`)
-    //     // const newPlansList = this.props.plans.filter((plan) => {
-    //     //   return plan._id !== id;
-    //     // });
-    //     // this.props.setPlans(newPlansList);
-    //   })
-    //   .catch((error) => {
-    //     console.log('API ERROR', error);
-    //   });
+    console.log('The Plan to Insert', e.target.planName.value, e.target.planIsInstitutional.value);
+    const body = {planName : e.target.planName.value}
+    if (e.target.planIsInstitutional === 'on') {
+      body.planIsInstitutional = true;
+    } else {
+      body.planIsInstitutional = false;
+    }
+    
+    insertNewPlan(body)
+      .then((response) => {
+        console.log(`The Plan with has been inserted. Body: `, body)
+        // const newPlansList = this.props.plans.filter((plan) => {
+        //   return plan._id !== id;
+        // });
+        // this.props.setPlans(newPlansList);
+      })
+      .catch((error) => {
+        console.log('API ERROR', error);
+      });
   }
 }
 
