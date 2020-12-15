@@ -26,7 +26,7 @@ class App extends Component {
       <>
         <Route path='/' component={Nav} />
 
-        <Route path='/' exact render={() => <h2>Welcome to the Retirement App!</h2>} />
+        <Route path='/' exact render={() => <h2>Welcome to the ⛱ ACME Retirement App!</h2>} />
 
         <Route path='/about' component={About} />
         <Route path='/detail' component={Detail} />

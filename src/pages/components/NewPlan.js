@@ -31,18 +31,16 @@ class NewPlan extends Component {
 
   // Make an API Call to Insert Plan
   newPlanFormSubmitted = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log('The Plan to Insert', e.target.planName.value, e.target.planIsInstitutional.value);
-    const body = {planName : e.target.planName.value}
-    if (e.target.planIsInstitutional === 'on') {
-      body.planIsInstitutional = true;
-    } else {
-      body.planIsInstitutional = false;
-    }
+    const body = { planName : e.target.planName.value,
+                   planIsInstitutional : e.target.planIsInstitutional.value === 'on' 
+                 }
     
     insertNewPlan(body)
       .then((response) => {
         console.log(`The Plan with has been inserted. Body: `, body)
+        alert("Plan added successfully")
         // const newPlansList = this.props.plans.filter((plan) => {
         //   return plan._id !== id;
         // });
@@ -53,11 +51,5 @@ class NewPlan extends Component {
       });
   }
 }
-
-
-
-
-
-
 
 export default NewPlan;
