@@ -48,7 +48,10 @@ class Plans extends Component {
               <h3>Edit a Plan</h3>               
               <form onSubmit={this.formSubmitted}>
                 <label for="planName">Plan Name:</label>
-                <input type="text" name="planName" size="70" required value={this.state.planName}/>
+                <input type="text" name="planName" size="70" 
+                       required value={this.state.planName}
+                       onChange={this.handleChange}
+                />
                 <br/>
                 <div>
                   <label for="planIsInstitutional">
@@ -91,7 +94,7 @@ class Plans extends Component {
     console.log("EDIT SUBMITTED")
     console.log('The Plan to Update', e.target.planName.value, e.target.planIsInstitutional.value);
     const body = { planName : e.target.planName.value,
-                   planIsInstitutional : 'on' // Change later, MVP getting late 
+                   planIsInstitutional : true // Change later, MVP getting late 
                  }
     // Make an API Call to Update a Plan
     updatePlanByID(this.state.id, body)
@@ -123,7 +126,22 @@ class Plans extends Component {
         console.log('API ERROR', error);
       });
   }
+
+  // If you have e.target.name, it can be a generic function
+  // planName : textValue,
+  // this.setState({
+  //   [e.target.name] : e.target.value,
+  // })
+  handleChange = (e) => {
+    const textValue = e.target.value
+    console.log("Plan Name Text Value", textValue)
+    this.setState({
+      [e.target.name] : e.target.value  
+    })
+  }
 }
+
+
 
 export default Plans;
 
