@@ -10,7 +10,8 @@ class Plan extends Component {
         {/* planName, planIsInstitutional, participants */}
         <h4>{this.props.planName}</h4>
         <sub>{this.props.planIsInstitutional}</sub>
-        <a href="#" onClick={this.deletePlan}>Delete</a>
+        <a href="#" onClick={this.editPlan}>Edit</a> | 
+        <a href="#" onClick={this.deletePlan}>Delete</a> 
       </div>
     )
   }
@@ -19,6 +20,12 @@ class Plan extends Component {
     e.preventDefault();
     this.props.deletePlan(this.props.id);
   }
+
+  editPlan = (e) => {
+    e.preventDefault();
+    this.props.showEditForm(this.props.id, this.props.planName);
+  }
+
 }
 
 export default Plan;

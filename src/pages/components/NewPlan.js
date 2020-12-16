@@ -14,7 +14,7 @@ class NewPlan extends Component {
         <h1>New Plan Page</h1>
         <form onSubmit={this.newPlanFormSubmitted}>
           <label for="planName">Plan Name:</label>
-          <input type="text" name="planName" required />
+          <input type="text" name="planName" size="70" required />
           <br/>
           <div>
             <label for="planIsInstitutional">
