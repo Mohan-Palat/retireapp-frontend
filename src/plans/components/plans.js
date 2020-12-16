@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import Plan from './Plan';
-import { getAllPlans, deletePlanByID } from '../api';
+import { getAllPlans, deletePlanByID, updatePlanByID } from '../api';
 
 class Plans extends Component {
   constructor() {
@@ -75,23 +75,40 @@ class Plans extends Component {
 
   /* Prefill the form plans in an array and prefill [Use State] */
   showEditForm = (id, planName) => {
-    console.log("IN showEditForm State:", this.state)
-    console.log("IN showEditForm props:", this.props)
     console.log("IN showEditForm ID:", planName)
     this.setState({                        
       showEditForm : true,
+      id : id,
       planName : planName  
     })
   }
  
-  formSubmitted = (id) => {
+  formSubmitted = (e) => {
+    // Flip the switch for conditional rendering
     this.setState({                        
       showEditForm : false 
     })
     console.log("EDIT SUBMITTED")
+    console.log('The Plan to Update', e.target.planName.value, e.target.planIsInstitutional.value);
+    const body = { planName : e.target.planName.value,
+                   planIsInstitutional : 'on' // Change later, MVP getting late 
+                 }
+    // Make an API Call to Update a Plan
+    updatePlanByID(this.state.id, body)
+      .then((response) => {
+        console.log(`The Plan has been updated. Body: `, body)
+        alert("Plan updated successfully")
+        // const newPlansList = this.props.plans.filter((plan) => {
+        //   return plan._id !== id;
+        // });
+        // this.props.setPlans(newPlansList);
+      })
+      .catch((error) => {
+        console.log('API ERROR', error);
+      });
   }
 
-  // Make an API Call to Delete an Plan
+  // Make an API Call to Delete a Plan
   deletePlan = (id) => {
     console.log('The Plan ID to Delete By', id);
     deletePlanByID(id)

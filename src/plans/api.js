@@ -21,4 +21,12 @@ const deletePlanByID = (id) => {
   // return axios.delete(`${process.env.REACT_APP_BASE_URL}/api/plans/${id}`);
 }
 
-export { getAllPlans, deletePlanByID };
+// Update Plan by ID
+const updatePlanByID = (id, body) => {
+  console.log(`Hitting ID: http://localhost:5000/api/plans/${id} BOD=${body}`)
+  return axios.patch(`http://localhost:5000/api/plans/${id}`, body);
+  // console.log(`Hitting ID: ${process.env.REACT_APP_BASE_URL}/api/plans/${id}`)
+  // return axios.delete(`${process.env.REACT_APP_BASE_URL}/api/plans/${id}`);
+}
+
+export { getAllPlans, deletePlanByID, updatePlanByID };
