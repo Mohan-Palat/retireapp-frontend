@@ -3,23 +3,23 @@
 
 import React, { Component } from 'react';
 import Plan from './Plan';
-import { getAllPlans, deletePlanByID, updatePlanByID } from '../api';
+import { deletePlanByID, updatePlanByID } from '../api';
 
 class Plans extends Component {
   constructor() {
     super()
     this.state={showEditForm:false}
-  }
-  componentDidMount() {
-    getAllPlans()
-      .then((response) => {
-        console.log('allPlans', response);
-        this.props.setPlans(response.data.plans);
-      })
-      .catch((error) => {
-        console.log('API ERROR:', error);
-      });
-  };
+  } 
+  // componentDidMount() { ------ Moved up
+  //   getAllPlans()
+  //     .then((response) => {
+  //       console.log('allPlans', response);
+  //       this.props.setPlans(response.data.plans);
+  //     })
+  //     .catch((error) => {
+  //       console.log('API ERROR:', error);
+  //     });
+  // };
 
   // planName, planIsInstitutional, participants 
   // We could have used ()=> anonymous function in showEditForm={this.showEditForm}
@@ -55,7 +55,9 @@ class Plans extends Component {
                 <br/>
                 <div>
                   <label for="planIsInstitutional">
-                    <input type="checkbox" id="planIsInstitutional" name="planIsInstitutional" />
+                    <input type="checkbox" id="planIsInstitutional" name="planIsInstitutional" 
+                        defaultChecked={this.state.planIsInstitutional}
+                    />
                     <span>Is the plan an Instituitional Plan</span>
                   </label>
                 </div>
@@ -77,12 +79,13 @@ class Plans extends Component {
   }
 
   /* Prefill the form plans in an array and prefill [Use State] */
-  showEditForm = (id, planName) => {
-    console.log("IN showEditForm ID:", planName)
+  showEditForm = (id, planName, planIsInstitutional) => {
+    console.log("IN showEditForm ID:", planName, "planIsInstitutional", planIsInstitutional)
     this.setState({                        
       showEditForm : true,
       id : id,
-      planName : planName  
+      planName : planName,
+      planIsInstitutional : planIsInstitutional 
     })
   }
  
@@ -92,19 +95,21 @@ class Plans extends Component {
       showEditForm : false 
     })
     console.log("EDIT SUBMITTED")
-    console.log('The Plan to Update', e.target.planName.value, e.target.planIsInstitutional.value);
+    console.log('The Plan to Update', e.target.planName.value);
+    console.log('The Plan is INSTL', e.target.planIsInstitutional.checked);
     const body = { planName : e.target.planName.value,
-                   planIsInstitutional : true // Change later, MVP getting late 
+                   planIsInstitutional : e.target.planIsInstitutional.checked
                  }
     // Make an API Call to Update a Plan
     updatePlanByID(this.state.id, body)
       .then((response) => {
         console.log(`The Plan has been updated. Body: `, body)
         alert("Plan updated successfully")
+        this.props.getPlans()
         // const newPlansList = this.props.plans.filter((plan) => {
         //   return plan._id !== id;
         // });
-        // this.props.setPlans(newPlansList);
+        // this.props.setPlans(newPlansList); 
       })
       .catch((error) => {
         console.log('API ERROR', error);
@@ -117,10 +122,11 @@ class Plans extends Component {
     deletePlanByID(id)
       .then((response) => {
         console.log(`The Plan with the ID ${id} has been deleted.`)
-        const newPlansList = this.props.plans.filter((plan) => {
-          return plan._id !== id;
-        });
-        this.props.setPlans(newPlansList);
+        this.props.getPlans()
+        // const newPlansList = this.props.plans.filter((plan) => {
+        //   return plan._id !== id;
+        // });
+        // this.props.setPlans(newPlansList);
       })
       .catch((error) => {
         console.log('API ERROR', error);
@@ -141,12 +147,7 @@ class Plans extends Component {
   }
 }
 
-
-
 export default Plans;
-
-// <input type="button" value="Cancel" onClick={this.formCancelled}></input>
-
 
 
 

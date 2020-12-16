@@ -23,7 +23,7 @@ class Plan extends Component {
 
   editPlan = (e) => {
     e.preventDefault();
-    this.props.showEditForm(this.props.id, this.props.planName);
+    this.props.showEditForm(this.props.id, this.props.planName, this.props.planIsInstitutional);
   }
 
 }

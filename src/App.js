@@ -8,6 +8,7 @@ import About from './pages/components/About';
 import Detail from './pages/components/Detail';
 import NewPlan from './pages/components/NewPlan';
 import Nav from './shared/components/Nav';
+import { getAllPlans } from './plans/api';
 
 class App extends Component {
   constructor(props) {
@@ -17,8 +18,19 @@ class App extends Component {
     }
   }
 
-  setPlans = (plans) => {
-    this.setState({ plans: plans });
+  componentDidMount() {
+    this.getPlans()
+  }
+
+  getPlans = () => {
+    getAllPlans()
+      .then((response) => {
+        console.log('allPlans', response);
+        this.setState({ plans: response.data.plans });
+      })
+      .catch((error) => {
+        console.log('API ERROR:', error);
+      });    
   }
 
   render() {
@@ -35,7 +47,7 @@ class App extends Component {
         <Route path='/plans' exact render={(props) => {
           return <Plans {...props}
                            plans={this.state.plans}
-                           setPlans={this.setPlans} />
+                           getPlans={this.getPlans} />
         }} />
 
       </>
