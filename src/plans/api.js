@@ -26,7 +26,7 @@ const updatePlanByID = (id, body) => {
   // console.log(`Hitting ID: http://localhost:5000/api/plans/${id} BOD=${body}`)
   // return axios.patch(`http://localhost:5000/api/plans/${id}`, body);
   console.log(`Hitting ID: ${process.env.REACT_APP_BACKEND_URL}/api/plans/${id}`)
-  return axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/plans/${id}`, body);
+  return axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/plans/${id}`, body);
 }
 
 export { getAllPlans, deletePlanByID, updatePlanByID };
