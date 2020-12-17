@@ -11,7 +11,7 @@ const Detail = ({ match }) => {
   return (
     <div>
       <h3>Participants, Funds and Holdings under the Plan</h3>
-      <p>Details Details. Update this paragraph</p>
+      You can see the details of plan elements - participants, funds and the current balance rendered as an SPA
       <ul>
         <li>
           <Link to={match.url + '/participant'}>Participant</Link>

@@ -118,10 +118,13 @@ class Plans extends Component {
 
   // Make an API Call to Delete a Plan
   deletePlan = (id) => {
+   if (!window.confirm("Are you sure you want to delete?")) 
+        return 
     console.log('The Plan ID to Delete By', id);
     deletePlanByID(id)
       .then((response) => {
         console.log(`The Plan with the ID ${id} has been deleted.`)
+        alert("Plan removed successfully")
         this.props.getPlans()
         // const newPlansList = this.props.plans.filter((plan) => {
         //   return plan._id !== id;

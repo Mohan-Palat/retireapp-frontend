@@ -34,7 +34,7 @@ class NewPlan extends Component {
     // e.preventDefault();
     console.log('The Plan to Insert', e.target.planName.value, e.target.planIsInstitutional.value);
     const body = { planName : e.target.planName.value,
-                   planIsInstitutional : e.target.planIsInstitutional.value === 'on' 
+                   planIsInstitutional : e.target.planIsInstitutional.checked
                  }
     
     insertNewPlan(body)
