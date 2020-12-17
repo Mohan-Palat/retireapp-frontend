@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import Plan from './Plan';
 import { deletePlanByID, updatePlanByID } from '../api';
+import {Header, Image, Segment} from 'semantic-ui-react'
 
 class Plans extends Component {
   constructor() {
@@ -45,7 +46,11 @@ class Plans extends Component {
           ?
             <>
               {/* Form right under here, later to Move to EditPlan Component */}
-              <h3>Edit a Plan</h3>               
+              <br/>
+              <Segment basic inverted padded='very' vertical color='red'>
+                <Header as='h3' textAlign='center'>Edit a Plan</Header>
+              </Segment>  
+              <br/>
               <form onSubmit={this.formSubmitted}>
                 <label for="planName">Plan Name:</label>
                 <input type="text" name="planName" size="70" 
@@ -70,7 +75,11 @@ class Plans extends Component {
             </>
           : 
             <>
-              <h3>All Plans</h3>
+              <br/>
+              <Segment basic inverted padded='very' vertical color='green'>
+                <Header as='h3' textAlign='center'>All Plans</Header>
+              </Segment>                
+              <br/>
               {allPlans}
             </>
         }

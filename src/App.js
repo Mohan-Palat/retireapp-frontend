@@ -9,6 +9,8 @@ import Detail from './pages/components/Detail';
 import NewPlan from './pages/components/NewPlan';
 import Nav from './shared/components/Nav';
 import { getAllPlans } from './plans/api';
+import "semantic-ui-css/semantic.min.css";
+import logo from './images/ret.png';
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +40,12 @@ class App extends Component {
       <>
         <Route path='/' component={Nav} />
 
-        <Route path='/' exact render={() => <h2>Welcome to the ⛱ ACME Retirement App!</h2>} />
+        <Route path='/' exact render={() => 
+                <>
+                  <h2>Welcome to the ⛱ ACME Retirement App!</h2>
+                  <img src={logo} class="ui huge image"/>
+                </>
+               } />
 
         <Route path='/about' component={About} />
         <Route path='/detail' component={Detail} />

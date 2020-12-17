@@ -7,8 +7,9 @@ import {Header, Image, Segment} from 'semantic-ui-react'
 const About = () => {
   return (
     <>
-    <Segment basic inverted padded='very' vertical>
-      <h3>About Acme Retirement</h3>
+    <br/>
+    <Segment basic inverted padded='very' vertical color='pink'>
+      <Header as='h3' textAlign='center'>About Acme Retirement</Header>
     </Segment>
       <ul>
         <li>When you invest with us, expect a safe and peaceful retirement</li>
@@ -20,3 +21,7 @@ const About = () => {
 }
 
 export default About;
+
+
+
+

@@ -6,12 +6,17 @@ import Participant from './Participant';
 import Investment from './Investment';
 import Holding from './Holding';
 import { Route, Link } from 'react-router-dom';
+import {Header, Image, Segment} from 'semantic-ui-react'
 
 const Detail = ({ match }) => {
   return (
     <div>
-      <h3>Participants, Funds and Holdings under the Plan</h3>
-      You can see the details of plan elements - participants, funds and the current balance rendered as an SPA
+      <br/>
+      <Segment basic inverted padded='very' vertical color='blue'>
+        <Header as='h3' textAlign='center'>Participants, Funds and Holdings under the Plan</Header>
+      </Segment>      
+      <br/>
+      Here you can view the details of plan elements - participants, funds and the current balance rendered as an SPA
       <ul>
         <li>
           <Link to={match.url + '/participant'}>Participant</Link>

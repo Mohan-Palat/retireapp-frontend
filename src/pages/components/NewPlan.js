@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import { insertNewPlan } from '../api';
+import {Header, Image, Segment} from 'semantic-ui-react'
 
 // <a href="#" onClick={this.deletePlan}>Delete</a>
 // e.preventDefault();
@@ -11,10 +12,15 @@ class NewPlan extends Component {
   render() {
     return (
       <>
-        <h1>New Plan Page</h1>
+        <br/>
+        <Segment basic inverted padded='very' vertical color='orange'>
+          <Header as='h3' textAlign='center'>New Plan Page</Header>
+        </Segment>
+        <br/>
         <form onSubmit={this.newPlanFormSubmitted}>
           <label for="planName">Plan Name:</label>
           <input type="text" name="planName" size="70" required />
+          <br/>
           <br/>
           <div>
             <label for="planIsInstitutional">
