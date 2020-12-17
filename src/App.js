@@ -11,6 +11,7 @@ import Nav from './shared/components/Nav';
 import { getAllPlans } from './plans/api';
 import "semantic-ui-css/semantic.min.css";
 import logo from './images/ret.png';
+import {Header, Image, Segment} from 'semantic-ui-react'
 
 class App extends Component {
   constructor(props) {
